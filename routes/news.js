@@ -1,0 +1,64 @@
+
+const express = require('express')
+const axios = require('axios')
+const newsr=express.Router()
+//const moment = require('moment')
+const math = require('math')
+
+
+newsr.get('/',async(req,res)=>{
+    try {
+        var url = 'http://newsapi.org/v2/top-headlines?' +
+          'country=in&' +
+          'apiKey=0273865bfce24af283e16cf7d788fead';
+
+        const news_get =await axios.get(url)
+        
+        
+
+    } catch (error) {
+        if(error.response){
+            console.log(error)
+        }
+
+    }
+})
+
+newsr.post('/search',async(req,res)=>{
+    const search=req.body.search
+    //console.log(req.body.search)
+
+
+    try {
+        var url = `http://newsapi.org/v2/everything?q=${search}&apiKey=0273865bfce24af283e16cf7d788fead`
+
+        const news_get =await axios.get(url)
+        
+        
+    } catch (error) {
+        if(error.response){
+            console.log(error)
+        }
+
+    }
+})
+
+newsr.get('/news/:category',async(req,res)=>{
+    var category = req.params.category;
+    try {
+        var url = 'http://newsapi.org/v2/top-headlines?country=in&category=' + category + '&apiKey=0273865bfce24af283e16cf7d788fead';
+
+        const news_get =await axios.get(url)
+        
+
+    } catch (error) {
+        if(error.response){
+            console.log(error)
+        }
+
+    }
+})
+
+newsr.get
+
+module.exports=newsr

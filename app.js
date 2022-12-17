@@ -6,5 +6,8 @@ const moment = require('moment')
 app.locals.moment = moment;
 
 app.use(express.urlencoded({ extended: true }));
+app.use('/',require('./routes/news'))
+
+
 
 app.listen(port,()=> console.log("started"))
